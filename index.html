@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css">
+        <link rel="stylesheet" href="css/Control.OSMGeocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Mogales Gate</title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/Control.OSMGeocoder.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/FarmBoundaries0.js"></script>
+        <script src="data/NewlodgeLinear1.js"></script>
+        <script src="data/NewlodgePoints2.js"></script>
+        <script src="data/OldlodgeLinear3.js"></script>
+        <script src="data/OldlodgePoints4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-25.9947972903,27.5765332082],[-25.923861981,27.6899970953]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://kirchhoffsurveyors.co.za" target="_blank">Kirchhoff Professional Surveyors</a>,<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var measureControl = new L.Control.Measure({
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        var basemap0 = L.tileLayer('http://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '&copy; <a href="https://livingatlas.arcgis.com/en/#s=0</a> ESRI',
+            maxZoom: 28
+        });
+        basemap0.addTo(map);
+        function setBounds() {
+        }
+        function pop_FarmBoundaries0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">tag_value</th>\
+                        <td>' + (feature.properties['tag_value'] !== null ? Autolinker.link(String(feature.properties['tag_value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_FarmBoundaries0_0() {
+            return {
+                pane: 'pane_FarmBoundaries0',
+                opacity: 1,
+                color: 'rgba(237,237,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fillOpacity: 1,
+                fillColor: 'rgba(233,133,150,0.0)',
+            }
+        }
+        map.createPane('pane_FarmBoundaries0');
+        map.getPane('pane_FarmBoundaries0').style.zIndex = 400;
+        map.getPane('pane_FarmBoundaries0').style['mix-blend-mode'] = 'normal';
+    var layer_FarmBoundaries0 = new L.geoJson(json_FarmBoundaries0, {
+        attribution: '<a href=""></a>',
+        pane: 'pane_FarmBoundaries0',
+        onEachFeature: pop_FarmBoundaries0,
+        style: style_FarmBoundaries0_0,
+    });
+        bounds_group.addLayer(layer_FarmBoundaries0);
+        map.addLayer(layer_FarmBoundaries0);
+        function pop_NewlodgeLinear1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? Autolinker.link(String(feature.properties['Layer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SubClasses'] !== null ? Autolinker.link(String(feature.properties['SubClasses'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ExtendedEn'] !== null ? Autolinker.link(String(feature.properties['ExtendedEn'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Linetype'] !== null ? Autolinker.link(String(feature.properties['Linetype'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EntityHand'] !== null ? Autolinker.link(String(feature.properties['EntityHand'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Text'] !== null ? Autolinker.link(String(feature.properties['Text'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_NewlodgeLinear1_0() {
+            return {
+                pane: 'pane_NewlodgeLinear1',
+                opacity: 1,
+                color: 'rgba(1,18,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_NewlodgeLinear1');
+        map.getPane('pane_NewlodgeLinear1').style.zIndex = 401;
+        map.getPane('pane_NewlodgeLinear1').style['mix-blend-mode'] = 'normal';
+    var layer_NewlodgeLinear1 = new L.geoJson(json_NewlodgeLinear1, {
+        attribution: '<a href=""></a>',
+        pane: 'pane_NewlodgeLinear1',
+        onEachFeature: pop_NewlodgeLinear1,
+        style: style_NewlodgeLinear1_0,
+    });
+        bounds_group.addLayer(layer_NewlodgeLinear1);
+        map.addLayer(layer_NewlodgeLinear1);
+        function pop_NewlodgePoints2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? Autolinker.link(String(feature.properties['Layer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SubClasses'] !== null ? Autolinker.link(String(feature.properties['SubClasses'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ExtendedEn'] !== null ? Autolinker.link(String(feature.properties['ExtendedEn'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Linetype'] !== null ? Autolinker.link(String(feature.properties['Linetype'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EntityHand'] !== null ? Autolinker.link(String(feature.properties['EntityHand'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Text'] !== null ? Autolinker.link(String(feature.properties['Text'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_NewlodgePoints2_0() {
+            return {
+                pane: 'pane_NewlodgePoints2',
+                radius: 1.6,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(121,25,199,1.0)',
+            }
+        }
+        map.createPane('pane_NewlodgePoints2');
+        map.getPane('pane_NewlodgePoints2').style.zIndex = 402;
+        map.getPane('pane_NewlodgePoints2').style['mix-blend-mode'] = 'normal';
+        var layer_NewlodgePoints2 = new L.geoJson(json_NewlodgePoints2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_NewlodgePoints2',
+            onEachFeature: pop_NewlodgePoints2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_NewlodgePoints2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_NewlodgePoints2);
+        map.addLayer(layer_NewlodgePoints2);
+        function pop_OldlodgeLinear3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? Autolinker.link(String(feature.properties['Layer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SubClasses'] !== null ? Autolinker.link(String(feature.properties['SubClasses'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ExtendedEn'] !== null ? Autolinker.link(String(feature.properties['ExtendedEn'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Linetype'] !== null ? Autolinker.link(String(feature.properties['Linetype'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EntityHand'] !== null ? Autolinker.link(String(feature.properties['EntityHand'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Text'] !== null ? Autolinker.link(String(feature.properties['Text'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_OldlodgeLinear3_0() {
+            return {
+                pane: 'pane_OldlodgeLinear3',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_OldlodgeLinear3');
+        map.getPane('pane_OldlodgeLinear3').style.zIndex = 403;
+        map.getPane('pane_OldlodgeLinear3').style['mix-blend-mode'] = 'normal';
+    var layer_OldlodgeLinear3 = new L.geoJson(json_OldlodgeLinear3, {
+        attribution: '<a href=""></a>',
+        pane: 'pane_OldlodgeLinear3',
+        onEachFeature: pop_OldlodgeLinear3,
+        style: style_OldlodgeLinear3_0,
+    });
+        bounds_group.addLayer(layer_OldlodgeLinear3);
+        map.addLayer(layer_OldlodgeLinear3);
+        function pop_OldlodgePoints4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Layer'] !== null ? Autolinker.link(String(feature.properties['Layer'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SubClasses'] !== null ? Autolinker.link(String(feature.properties['SubClasses'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ExtendedEn'] !== null ? Autolinker.link(String(feature.properties['ExtendedEn'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Linetype'] !== null ? Autolinker.link(String(feature.properties['Linetype'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EntityHand'] !== null ? Autolinker.link(String(feature.properties['EntityHand'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Text'] !== null ? Autolinker.link(String(feature.properties['Text'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent);
+        }
+
+        function style_OldlodgePoints4_0() {
+            return {
+                pane: 'pane_OldlodgePoints4',
+                radius: 1.2,
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fillOpacity: 1,
+                fillColor: 'rgba(227,26,28,1.0)',
+            }
+        }
+        map.createPane('pane_OldlodgePoints4');
+        map.getPane('pane_OldlodgePoints4').style.zIndex = 404;
+        map.getPane('pane_OldlodgePoints4').style['mix-blend-mode'] = 'normal';
+        var layer_OldlodgePoints4 = new L.geoJson(json_OldlodgePoints4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_OldlodgePoints4',
+            onEachFeature: pop_OldlodgePoints4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_OldlodgePoints4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_OldlodgePoints4);
+        map.addLayer(layer_OldlodgePoints4);
+        var osmGeocoder = new L.Control.OSMGeocoder({
+            collapsed: false,
+            position: 'topright',
+            text: 'Search',
+        });
+        osmGeocoder.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/OldlodgePoints4.png" /> Old lodge Points': layer_OldlodgePoints4,'<img src="legend/OldlodgeLinear3.png" /> Old lodge Linear': layer_OldlodgeLinear3,'<img src="legend/NewlodgePoints2.png" /> New lodge Points': layer_NewlodgePoints2,'<img src="legend/NewlodgeLinear1.png" /> New lodge Linear': layer_NewlodgeLinear1,'<img src="legend/FarmBoundaries0.png" /> Farm Boundaries': layer_FarmBoundaries0,},{collapsed:false}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_FarmBoundaries0.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['tag_value'] !== null?String('<div style="color: #000000; font-size: 8pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['tag_value']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_FarmBoundaries0'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_FarmBoundaries0]);
+        map.on("zoomend", function(){
+            resetLabels([layer_FarmBoundaries0]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_FarmBoundaries0]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_FarmBoundaries0]);
+        });
+        </script>
+    </body>
+</html>
